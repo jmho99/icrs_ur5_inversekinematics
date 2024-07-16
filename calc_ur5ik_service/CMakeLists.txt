@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(calc_ur5Ik)
+project(calc_ur5ik_service)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -7,38 +7,37 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
-# uncomment the following section in order to fill in
-# further dependencies manually.
-# find_package(<dependency> REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
+find_package(calc_interfaces REQUIRED)
 
 add_executable(set_RT src/set_RT.cpp)
 ament_target_dependencies(
   set_RT
   "rclcpp"
   "std_msgs"
+  "calc_interfaces"
 )
 target_include_directories(set_RT PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
 target_compile_features(set_RT PUBLIC c_std_99 cxx_std_17)  # Require C99 and C++17
 
-install(TARGETS set_RT
-  DESTINATION lib/${PROJECT_NAME})
-
-add_executable(ur5Ik src/ur5Ik.cpp)
+add_executable(ur5ik src/ur5ik.cpp)
 ament_target_dependencies(
-  ur5Ik
+  ur5ik
   "rclcpp"
   "std_msgs"
+  "calc_interfaces"
 )
-target_include_directories(ur5Ik PUBLIC
+target_include_directories(ur5ik PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
-target_compile_features(ur5Ik PUBLIC c_std_99 cxx_std_17)  # Require C99 and C++17
+target_compile_features(ur5ik PUBLIC c_std_99 cxx_std_17)  # Require C99 and C++17
 
-install(TARGETS ur5Ik set_RT
+install(TARGETS
+set_RT
+ur5ik
   DESTINATION lib/${PROJECT_NAME})
 
 if(BUILD_TESTING)
