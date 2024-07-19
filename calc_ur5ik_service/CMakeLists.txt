@@ -11,6 +11,9 @@ find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(calc_interfaces REQUIRED)
 
+find_package(ament_cmake_python REQUIRED)
+find_package(rclpy REQUIRED)
+
 add_executable(set_RT src/set_RT.cpp)
 ament_target_dependencies(
   set_RT
@@ -39,6 +42,14 @@ install(TARGETS
 set_RT
 ur5ik
   DESTINATION lib/${PROJECT_NAME})
+
+#python module
+ament_python_install_package(${PROJECT_NAME})
+install (PROGRAMS
+  scripts/set_RT_py.py
+  scripts/ur5ik_py.py
+  DESTINATION lib/${PROJECT_NAME}
+)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)

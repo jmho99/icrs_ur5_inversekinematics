@@ -13,7 +13,6 @@ m_roll = float(pi)
 m_pitch = float(0.0)
 m_yaw = float(0.0)
 
-
 class set_RT(Node):
 
     def __init__(self):
