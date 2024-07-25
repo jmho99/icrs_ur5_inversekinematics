@@ -30,18 +30,18 @@ target_compile_features(set_RT PUBLIC c_std_99 cxx_std_17)  # Require C99 and C+
 install(TARGETS set_RT
   DESTINATION lib/${PROJECT_NAME})
 
-add_executable(ur5Ik src/ur5Ik.cpp)
+add_executable(ur5ik src/ur5ik.cpp)
 ament_target_dependencies(
-  ur5Ik
+  ur5ik
   "rclcpp"
   "std_msgs"
 )
-target_include_directories(ur5Ik PUBLIC
+target_include_directories(ur5ik PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
-target_compile_features(ur5Ik PUBLIC c_std_99 cxx_std_17)  # Require C99 and C++17
+target_compile_features(ur5ik PUBLIC c_std_99 cxx_std_17)  # Require C99 and C++17
 
-install(TARGETS ur5Ik set_RT
+install(TARGETS ur5ik set_RT
   DESTINATION lib/${PROJECT_NAME})
 
 #python module

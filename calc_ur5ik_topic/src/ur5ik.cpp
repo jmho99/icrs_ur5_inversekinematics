@@ -12,18 +12,18 @@
 using std::placeholders::_1;
 double pi = 3.141592;
 
-class ur5Ik : public rclcpp::Node
+class ur5ik : public rclcpp::Node
 {
 public:
-    ur5Ik()
+    ur5ik()
     : Node("ur5ik")
     {
         m_subscriber = this -> create_subscription<std_msgs::msg::Float64MultiArray>(
-            "target_pos", 10, std::bind(&ur5Ik::ur5Ik_callback, this, _1));
+            "target_pos", 10, std::bind(&ur5ik::ur5ik_callback, this, _1));
     }
 #if 0
-    ur5Ik(float x, float y, float z, float roll, float pitch, float yaw)
-    : ur5Ik()
+    ur5ik(float x, float y, float z, float roll, float pitch, float yaw)
+    : ur5ik()
     {
         set_trans(x, y, z, roll, pitch, yaw);
         cal_theta();
@@ -47,7 +47,7 @@ private:
     double m_sepe_get_topic[6] = { 0 };
 
 #if 1
-    void ur5Ik_callback(const std_msgs::msg::Float64MultiArray & get_topic)
+    void ur5ik_callback(const std_msgs::msg::Float64MultiArray & get_topic)
     {
         for (int i = 0; i < 6; i++)
         {
@@ -253,10 +253,10 @@ int main(int argc, char * argv[])
         std::cout << val[i] << "\n";
     }
 
-    ur5Ik sol(0.0, 0.6, 0.3, pi, 0, 0);
-    ur5Ik sol2(val[0], val[1], val[2], val[3], val[4], val[5]);
+    ur5ik sol(0.0, 0.6, 0.3, pi, 0, 0);
+    ur5ik sol2(val[0], val[1], val[2], val[3], val[4], val[5]);
 #endif
-    rclcpp::spin(std::make_shared<ur5Ik>());
+    rclcpp::spin(std::make_shared<ur5ik>());
 
     rclcpp::shutdown();
     return 0;
