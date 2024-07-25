@@ -30,7 +30,9 @@
 
     * Server
 
-        ros2 run calc_ur5ik_service ur5ik
+        ros2 run calc_ur5ik_service ur5ik 0.0 0.6 0.3 3.1415 0.0 0.0
+
+        뒤에 인수 입력해주기 {x,y,z,roll,pitch,yaw}
 
     * Client
 
@@ -57,6 +59,10 @@
     * Client
 
         ros2 run calc_ur5ik_action set_RT
+
+    * Using Terminal
+
+        ros2 action send_goal /Goal_pose calc_interfaces/action/CalcTheta "{ act_target: [0.0, 0.6, 0.3, 3.1415, 0.0, 0.0] }"
 
 * __Python__
 
