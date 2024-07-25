@@ -32,7 +32,7 @@
 
         ros2 run calc_ur5ik_service ur5ik 0.0 0.6 0.3 3.1415 0.0 0.0
 
-        뒤에 인수 입력해주기 {x,y,z,roll,pitch,yaw}
+        [뒤에 인수 입력해주기 {x,y,z,roll,pitch,yaw}]
 
     * Client
 
