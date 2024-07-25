@@ -21,7 +21,7 @@ class set_RT(Node):
 
     def __init__(self):
         super().__init__('set_RT')
-        self.cli = self.create_client(SixTheta, 'calc_ik')
+        self.m_client = self.create_client(SixTheta, 'calc_ik')
         while not self.cli.wait_for_service(timeout_sec=1.0):
             self.get_logger().info('service not available, waiting again...')
         self.req = SixTheta.Request()

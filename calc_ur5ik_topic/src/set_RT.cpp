@@ -13,7 +13,7 @@ double pi = 3.141592;
 
 class set_RT : public rclcpp::Node
 {
-    public:
+public:
     set_RT()
     : Node("set_rt")
     {

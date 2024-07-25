@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(calc_ur5ik_service)
+project(calc_ur5ik_action)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -7,12 +7,12 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
+find_package(ament_cmake_python REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
-find_package(calc_interfaces REQUIRED)
-
-find_package(ament_cmake_python REQUIRED)
 find_package(rclpy REQUIRED)
+find_package(calc_interfaces REQUIRED)
+find_package(rclcpp_action REQUIRED)
 
 add_executable(set_RT src/set_RT.cpp)
 ament_target_dependencies(
@@ -20,6 +20,7 @@ ament_target_dependencies(
   "rclcpp"
   "std_msgs"
   "calc_interfaces"
+  "rclcpp_action"
 )
 target_include_directories(set_RT PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
@@ -32,6 +33,7 @@ ament_target_dependencies(
   "rclcpp"
   "std_msgs"
   "calc_interfaces"
+  "rclcpp_action"
 )
 target_include_directories(ur5ik PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>

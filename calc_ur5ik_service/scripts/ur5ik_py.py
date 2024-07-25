@@ -6,24 +6,24 @@ import rclpy
 from rclpy.node import Node
 from std_msgs.msg import Float64MultiArray, MultiArrayDimension, MultiArrayLayout
 
+from calc_interfaces.srv import SixTheta
+
 class ur5ik(Node):
 
     def __init__(self):
         super().__init__('ur5ik')
-        self.m_publisher = self.create_subscription(
-            Float64MultiArray,
+        self.m_server = self.create_service(
+            SixTheta,
             'calc_ik',
-            self.listener_callback,
-            10)
-        self.subscriptions
+            self.service_callback)
 
-    def listener_callback(self, msg):
-        x = msg.data[0]
-        y = msg.data[1]
-        z = msg.data[2]
-        roll = msg.data[3]
-        pitch = msg.data[4]
-        yaw = msg.data[5]
+    def service_callback(self, request, response):
+        x = request.srv_target[0]
+        y = request.srv_target[1]
+        z = request.srv_target[2]
+        roll = request.srv_target[3]
+        pitch = request.srv_target[4]
+        yaw = request.srv_target[5]
 
         robot = rtb.models.UR5()
         Tep = SE3.Trans(x, y, z) * SE3.Rz(yaw, 'rad') * SE3.Ry(pitch, 'rad') * SE3.Rx(roll, 'rad')
@@ -36,6 +36,13 @@ class ur5ik(Node):
         theta5 = sol[0][4]
         theta6 = sol[0][5]
 
+        response.srv_theta[0] = theta1
+        response.srv_theta[1] = theta2
+        response.srv_theta[2] = theta3
+        response.srv_theta[3] = theta4
+        response.srv_theta[4] = theta5
+        response.srv_theta[5] = theta6
+
         self.get_logger().info('theta1 : "%f"' % theta1)
         self.get_logger().info('theta2 : "%f"' % theta2)
         self.get_logger().info('theta3 : "%f"' % theta3)
@@ -44,9 +51,11 @@ class ur5ik(Node):
         self.get_logger().info('theta6 : "%f"' % theta6)
         self.get_logger().info('-----------------')
 
+        return response
 
-def main(args=None):
-    rclpy.init(args=args)
+
+def main():
+    rclpy.init()
     rclpy.spin(ur5ik())
     rclpy.shutdown()
 

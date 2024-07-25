@@ -14,7 +14,7 @@ int main(int argc, char **argv)
 {
     rclcpp::init(argc, argv);
 
-    std::shared_ptr<rclcpp::Node> node = rclcpp::Node::make_shared("ur5ik");
+    std::shared_ptr<rclcpp::Node> node = rclcpp::Node::make_shared("set_RT");
 
     rclcpp::Client<calc_interfaces::srv::SixTheta>::SharedPtr client =
         node -> create_client<calc_interfaces::srv::SixTheta>("calc_ik");

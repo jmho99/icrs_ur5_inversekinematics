@@ -18,7 +18,7 @@ public:
     ur5Ik()
     : Node("ur5ik")
     {
-        m_subscription = this -> create_subscription<std_msgs::msg::Float64MultiArray>(
+        m_subscriber = this -> create_subscription<std_msgs::msg::Float64MultiArray>(
             "target_pos", 10, std::bind(&ur5Ik::ur5Ik_callback, this, _1));
     }
 #if 0
@@ -216,8 +216,8 @@ private:
     }
 
 
-   //rclcpp::Subscription<std_msgs::msg::String>::SharedPtr m_subscription;
-   rclcpp::Subscription<std_msgs::msg::Float64MultiArray>::SharedPtr m_subscription;
+   //rclcpp::Subscription<std_msgs::msg::String>::SharedPtr m_subscriber;
+   rclcpp::Subscription<std_msgs::msg::Float64MultiArray>::SharedPtr m_subscriber;
 
 };
 

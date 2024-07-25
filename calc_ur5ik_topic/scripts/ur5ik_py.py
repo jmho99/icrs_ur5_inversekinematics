@@ -10,7 +10,7 @@ class ur5ik(Node):
 
     def __init__(self):
         super().__init__('ur5ik')
-        self.m_publisher = self.create_subscription(
+        self.m_subscriber = self.create_subscription(
             Float64MultiArray,
             'target_pos',
             self.listener_callback,
