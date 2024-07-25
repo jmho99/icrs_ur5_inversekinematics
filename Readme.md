@@ -67,3 +67,14 @@
     * Client
 
         ros2 run calc_ur5ik_action set_RT_py.py
+
+---
+
+## 개념 작성 페이지
+
+노션 페이지 : <https://playful-butterkase-c7d.notion.site/c226e3ee97164fd892db570835e95e5d?pvs=4>
+
+---
+
+## 참고 자료
+ROS2 Humble Docs : <https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries.html#>
