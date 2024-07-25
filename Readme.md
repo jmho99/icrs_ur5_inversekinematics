@@ -2,7 +2,7 @@
 
 ## 1. Topic
 
-  ### * CPP
+*   CPP
 
         * Publisher
 
@@ -12,7 +12,7 @@
 
             ros2 run calc_ur5ik_topic ur5ik
 
-  ### * Python
+   * Python
 
         * Publisher
 
@@ -26,7 +26,7 @@
 
 ## 2. Service
 
-  ### * CPP
+   * CPP
 
         * Server
 
@@ -36,7 +36,7 @@
 
             ros2 run calc_ur5ik_service set_RT
 
-  ### * Python
+   * Python
 
         * Server
 
@@ -48,7 +48,7 @@
 
 ## 3. Action
 
-  ### * CPP
+   * CPP
 
         * Server
 
@@ -58,7 +58,7 @@
 
             ros2 run calc_ur5ik_action set_RT
 
-  ### * Python
+   * Python
 
         * Server
 
