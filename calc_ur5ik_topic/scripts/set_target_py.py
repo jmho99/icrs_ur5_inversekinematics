@@ -13,10 +13,10 @@ m_roll = float(pi)
 m_pitch = float(0.0)
 m_yaw = float(0.0)
 
-class set_RT(Node):
+class set_target(Node):
 
     def __init__(self):
-        super().__init__('set_RT')
+        super().__init__('set_target')
         self.m_publisher = self.create_publisher(Float64MultiArray, 'topic_ik', 10)
         timer_period = 0.5
         self.timer = self.create_timer(timer_period, self.timer_callback)
@@ -41,7 +41,7 @@ class set_RT(Node):
 
 def main(args=None):
     rclpy.init(args=args)
-    rclpy.spin(set_RT())
+    rclpy.spin(set_target())
     rclpy.shutdown()
 
 if __name__ == '__main__':

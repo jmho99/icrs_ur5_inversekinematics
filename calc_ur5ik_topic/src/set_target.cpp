@@ -11,16 +11,16 @@ using namespace std::chrono_literals;
 
 double pi = 3.141592;
 
-class set_RT : public rclcpp::Node
+class set_target : public rclcpp::Node
 {
 public:
-    set_RT()
-    : Node("set_rt")
+    set_target()
+    : Node("set_target")
     {
         m_publisher = this -> create_publisher<std_msgs::msg::Float64MultiArray>(
             "topic_ik",10);
         m_timer = this -> create_wall_timer(
-            3s, std::bind(&set_RT::timer_callback, this));
+            3s, std::bind(&set_target::timer_callback, this));
     }
     private:
     double m_x = 0.0;
@@ -57,7 +57,7 @@ public:
 int main(int argc, char * argv[])
 {
     rclcpp::init(argc,argv);
-    rclcpp::spin(std::make_shared<set_RT>());
+    rclcpp::spin(std::make_shared<set_target>());
     rclcpp::shutdown();
 
     return 0;

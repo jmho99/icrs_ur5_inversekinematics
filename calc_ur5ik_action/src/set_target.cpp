@@ -8,14 +8,14 @@
 
 double pi = 3.141592;
 
-class set_RT : public rclcpp::Node
+class set_target : public rclcpp::Node
 {
 public:
     using Interface = calc_interfaces::action::CalcTheta;
     using GoalHandleInterface = rclcpp_action::ClientGoalHandle<Interface>;
 
-    explicit set_RT(const rclcpp::NodeOptions & options = rclcpp::NodeOptions())
-    : Node("set_RT", options)
+    explicit set_target(const rclcpp::NodeOptions & options = rclcpp::NodeOptions())
+    : Node("set_target", options)
     {
         this->m_action_client = rclcpp_action::create_client<Interface>(
             this,
@@ -23,7 +23,7 @@ public:
 
             this->m_timer = this->create_wall_timer(
                 std::chrono::milliseconds(500),
-                std::bind(&set_RT::send_goal, this));
+                std::bind(&set_target::send_goal, this));
     }
 
     void send_goal()
@@ -50,11 +50,11 @@ public:
 
         auto send_goal_options = rclcpp_action::Client<Interface>::SendGoalOptions();
         send_goal_options.goal_response_callback =
-            std::bind(&set_RT::goal_response_callback, this, _1);
+            std::bind(&set_target::goal_response_callback, this, _1);
         send_goal_options.feedback_callback =
-            std::bind(&set_RT::feedback_callback, this, _1, _2);
+            std::bind(&set_target::feedback_callback, this, _1, _2);
         send_goal_options.result_callback =
-            std::bind(&set_RT::result_callback, this, _1);
+            std::bind(&set_target::result_callback, this, _1);
 
         this->m_action_client->async_send_goal(request, send_goal_options);
     }
@@ -115,6 +115,6 @@ private:
 int main(int argc, char **argv)
 {
 	rclcpp::init(argc, argv);
-    rclcpp::spin(std::make_shared<set_RT>());
+    rclcpp::spin(std::make_shared<set_target>());
 	rclcpp::shutdown();
 }

@@ -4,9 +4,9 @@ from rclpy.action import ActionClient
 from rclpy.node import Node
 from calc_interfaces.action import CalcTheta
 
-class set_RT(Node):
+class set_target(Node):
     def __init__(self):
-        super().__init__('set_RT')
+        super().__init__('set_target')
         self.m_action_client = ActionClient(self, CalcTheta, 'action_ik')
 
     def send_goal(self):
@@ -41,7 +41,7 @@ class set_RT(Node):
 
 def main():
     rclpy.init()
-    action_client = set_RT()
+    action_client = set_target()
     action_client.send_goal()
     rclpy.spin(action_client)
     # rclpy.shutdown()

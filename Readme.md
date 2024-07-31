@@ -6,7 +6,7 @@
 
     * Publisher
 
-        ros2 run calc_ur5ik_topic set_RT
+        ros2 run calc_ur5ik_topic set_target
 
     * subscriber
 
@@ -16,7 +16,7 @@
 
     * Publisher
 
-        ros2 run calc_ur5ik_topic set_RT_py.py
+        ros2 run calc_ur5ik_topic set_target_py.py
 
 
     * subscriber
@@ -36,7 +36,7 @@
 
     * Client
 
-        ros2 run calc_ur5ik_service set_RT
+        ros2 run calc_ur5ik_service set_target
 
 * __Python__
 
@@ -46,7 +46,7 @@
 
     * Client
 
-        ros2 run calc_ur5ik_service set_RT_py.py
+        ros2 run calc_ur5ik_service set_target_py.py
 
 ## 3. Action
 
@@ -58,7 +58,7 @@
 
     * Client
 
-        ros2 run calc_ur5ik_action set_RT
+        ros2 run calc_ur5ik_action set_target
 
     * Using Terminal
 
@@ -72,7 +72,7 @@
 
     * Client
 
-        ros2 run calc_ur5ik_action set_RT_py.py
+        ros2 run calc_ur5ik_action set_target_py.py
 
 ---
 

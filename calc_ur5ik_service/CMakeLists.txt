@@ -14,17 +14,17 @@ find_package(calc_interfaces REQUIRED)
 find_package(ament_cmake_python REQUIRED)
 find_package(rclpy REQUIRED)
 
-add_executable(set_RT src/set_RT.cpp)
+add_executable(set_target src/set_target.cpp)
 ament_target_dependencies(
-  set_RT
+  set_target
   "rclcpp"
   "std_msgs"
   "calc_interfaces"
 )
-target_include_directories(set_RT PUBLIC
+target_include_directories(set_target PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
-target_compile_features(set_RT PUBLIC c_std_99 cxx_std_17)  # Require C99 and C++17
+target_compile_features(set_target PUBLIC c_std_99 cxx_std_17)  # Require C99 and C++17
 
 add_executable(ur5ik src/ur5ik.cpp)
 ament_target_dependencies(
@@ -39,14 +39,14 @@ target_include_directories(ur5ik PUBLIC
 target_compile_features(ur5ik PUBLIC c_std_99 cxx_std_17)  # Require C99 and C++17
 
 install(TARGETS
-  set_RT
+  set_target
   ur5ik
   DESTINATION lib/${PROJECT_NAME})
 
 #python module
 ament_python_install_package(${PROJECT_NAME})
 install (PROGRAMS
-  scripts/set_RT_py.py
+  scripts/set_target_py.py
   scripts/ur5ik_py.py
   DESTINATION lib/${PROJECT_NAME}
 )

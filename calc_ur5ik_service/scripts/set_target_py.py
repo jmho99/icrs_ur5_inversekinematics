@@ -17,10 +17,10 @@ m_pitch = float(0.0)
 m_yaw = float(0.0)
 
 
-class set_RT(Node):
+class set_target(Node):
 
     def __init__(self):
-        super().__init__('set_RT')
+        super().__init__('set_target')
         self.m_client = self.create_client(SixTheta, 'service_ik')
         while not self.cli.wait_for_service(timeout_sec=1.0):
             self.get_logger().info('service not available, waiting again...')
@@ -37,7 +37,7 @@ class set_RT(Node):
 
 def main():
     rclpy.init()
-    send_target = set_RT()
+    send_target = set_target()
     get_theta = send_target.send_request()
     rclpy.spin_until_future_complete(send_target, get_theta)
     response = get_theta.result()
