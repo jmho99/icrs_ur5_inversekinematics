@@ -174,7 +174,7 @@ int main(int argc, char **argv)
 	std::shared_ptr<rclcpp::Node> node = rclcpp::Node::make_shared("ur5ik");
 
 	rclcpp::Service<calc_interfaces::srv::SixTheta>::SharedPtr server =
-		node -> create_service<calc_interfaces::srv::SixTheta>("calc_ik", &set);
+		node -> create_service<calc_interfaces::srv::SixTheta>("service_ik", &set);
 
 	RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Ready to set target.");
 

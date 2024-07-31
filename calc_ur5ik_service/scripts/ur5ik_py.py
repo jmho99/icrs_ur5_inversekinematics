@@ -14,7 +14,7 @@ class ur5ik(Node):
         super().__init__('ur5ik')
         self.m_server = self.create_service(
             SixTheta,
-            'calc_ik',
+            'service_ik',
             self.service_callback)
 
     def service_callback(self, request, response):

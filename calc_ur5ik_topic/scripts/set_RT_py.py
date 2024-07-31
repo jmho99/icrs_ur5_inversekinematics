@@ -17,7 +17,7 @@ class set_RT(Node):
 
     def __init__(self):
         super().__init__('set_RT')
-        self.m_publisher = self.create_publisher(Float64MultiArray, 'target_pos', 10)
+        self.m_publisher = self.create_publisher(Float64MultiArray, 'topic_ik', 10)
         timer_period = 0.5
         self.timer = self.create_timer(timer_period, self.timer_callback)
         self.i = 0

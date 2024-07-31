@@ -17,7 +17,7 @@ int main(int argc, char **argv)
     std::shared_ptr<rclcpp::Node> node = rclcpp::Node::make_shared("set_RT");
 
     rclcpp::Client<calc_interfaces::srv::SixTheta>::SharedPtr client =
-        node -> create_client<calc_interfaces::srv::SixTheta>("calc_ik");
+        node -> create_client<calc_interfaces::srv::SixTheta>("service_ik");
 
         auto request = std::make_shared<calc_interfaces::srv::SixTheta::Request>();
         request -> srv_target[0] = atof(argv[1]); //0.0

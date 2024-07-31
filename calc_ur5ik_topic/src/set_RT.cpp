@@ -18,7 +18,7 @@ public:
     : Node("set_rt")
     {
         m_publisher = this -> create_publisher<std_msgs::msg::Float64MultiArray>(
-            "target_pos",10);
+            "topic_ik",10);
         m_timer = this -> create_wall_timer(
             3s, std::bind(&set_RT::timer_callback, this));
     }

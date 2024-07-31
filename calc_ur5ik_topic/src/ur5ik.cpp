@@ -19,7 +19,7 @@ public:
     : Node("ur5ik")
     {
         m_subscriber = this -> create_subscription<std_msgs::msg::Float64MultiArray>(
-            "target_pos", 10, std::bind(&ur5ik::ur5ik_callback, this, _1));
+            "topic_ik", 10, std::bind(&ur5ik::ur5ik_callback, this, _1));
     }
 #if 0
     ur5ik(float x, float y, float z, float roll, float pitch, float yaw)

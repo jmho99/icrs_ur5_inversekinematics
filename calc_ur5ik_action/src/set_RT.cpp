@@ -19,7 +19,7 @@ public:
     {
         this->m_action_client = rclcpp_action::create_client<Interface>(
             this,
-            "Goal_pose");
+            "action_ik");
 
             this->m_timer = this->create_wall_timer(
                 std::chrono::milliseconds(500),

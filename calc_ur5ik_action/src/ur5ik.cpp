@@ -20,7 +20,7 @@ public:
 
         this->m_action_server = rclcpp_action::create_server<Interface>(
             this,
-            "Goal_pose",
+            "action_ik",
             std::bind(&ur5ik::handle_goal, this, _1, _2),
             std::bind(&ur5ik::handle_cancel, this, _1),
             std::bind(&ur5ik::handle_accepted, this, _1)
