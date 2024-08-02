@@ -6,22 +6,22 @@
 
     * Publisher
 
-        ros2 run calc_ur5ik_topic set_target
+        ros2 run topic_ur5ik target_pub
 
     * subscriber
 
-        ros2 run calc_ur5ik_topic ur5ik
+        ros2 run topic_ur5ik calc_sub
 
 * __Python__
 
     * Publisher
 
-        ros2 run calc_ur5ik_topic set_target_py.py
+        ros2 run topic_ur5ik target_pub_py.py
 
 
     * subscriber
 
-        ros2 run calc_ur5ik_topic ur5ik_py.py
+        ros2 run topic_ur5ik calc_sub_py.py
 
 
 ## 2. Service
@@ -30,23 +30,23 @@
 
     * Server
 
-        ros2 run calc_ur5ik_service ur5ik 0.0 0.6 0.3 3.1415 0.0 0.0
-
-        [ 뒤에 인수 입력해주기 {x,y,z,roll,pitch,yaw} ]
+        ros2 run service_ur5ik calc_server
 
     * Client
 
-        ros2 run calc_ur5ik_service set_target
+        ros2 run service_ur5ik target_client 0.0 0.6 0.3 3.1415 0.0 0.0
+
+        [ 뒤에 인수 입력해주기 {x,y,z,roll,pitch,yaw} ]
 
 * __Python__
 
     * Server
 
-        ros2 run calc_ur5ik_service ur5ik_py.py
+        ros2 run service_ur5ik calc_server_py.py
 
     * Client
 
-        ros2 run calc_ur5ik_service set_target_py.py
+        ros2 run service_ur5ik target_client_py.py
 
 ## 3. Action
 
@@ -54,25 +54,25 @@
 
     * Server
 
-        ros2 run calc_ur5ik_action ur5ik
+        ros2 run action_ur5ik calc_act_server
 
     * Client
 
-        ros2 run calc_ur5ik_action set_target
+        ros2 run action_ur5ik target_act_client
 
     * Using Terminal
 
-        ros2 action send_goal /Goal_pose calc_interfaces/action/CalcTheta "{ act_target: [0.0, 0.6, 0.3, 3.1415, 0.0, 0.0] }"
+        ros2 action send_goal /Goal_pose interfaces_ur5ik/action/CalcTheta "{ act_target: [0.0, 0.6, 0.3, 3.1415, 0.0, 0.0] }"
 
 * __Python__
 
     * Server
 
-        ros2 run calc_ur5ik_action ur5ik_py.py
+        ros2 run action_ur5ik calc_act_server_py.py
 
     * Client
 
-        ros2 run calc_ur5ik_action set_target_py.py
+        ros2 run action_ur5ik target_act_client_py.py
 
 ---
 
